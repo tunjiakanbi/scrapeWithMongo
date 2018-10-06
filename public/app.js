@@ -5,15 +5,28 @@ $(document).ready(function() {
     url: "api/fetch" 
   });
 // Grab the articles as a json
-$.getJSON("api/allarticles", function(data) {
-  // console.log("0th elmnt",data[0]._id);
-  // For each one
+// $.getJSON("api/allarticles", function(data) {
+//   // console.log("0th elmnt",data[0]._id);
+//   // For each one
 
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-  }
+//   for (var i = 0; i < data.length; i++) {
+//     // Display the apropos information on the page
+
+//     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+//   }
+// });
+
+$("#scrapper").click(function(){
+  $.getJSON("api/allarticles", function(data) {
+    // console.log("0th elmnt",data[0]._id);
+    // For each one
+  
+    for (var i = 0; i < data.length; i++) {
+      // Display the apropos information on the page
+  
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    }
+  });
 });
 
 
