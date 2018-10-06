@@ -38,7 +38,7 @@ app.use(routes);
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/week18Populater");
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines" || "mongodb://testuser:P@$$w0rd@ds255282.mlab.com:55282/heroku_xww1skqd";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
