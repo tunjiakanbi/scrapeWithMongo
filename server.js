@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 //var logger = require("morgan");
 var mongoose = require("mongoose");
-
+var routes = require("./routes");
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
@@ -32,6 +32,8 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
+//have every request go through our route middleware
+app.use(routes);
 
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/week18Populater");
@@ -84,7 +86,7 @@ app.get("/scrape", function(req, res) {
     //res.send("Scrape Complete");
     res.send(newArticle);
   });
-});
+});//end cheerio scrape route
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
@@ -148,7 +150,7 @@ app.post("/articles/:id", function(req, res) {
 app.get("/" , function(req, res){
   db.Article.find({})
   .then(function(dbArticle){
-    res.render("index", {articles: dbArticle})
+    res.render("home", {articles: dbArticle})
   })
   .catch(function(err) {
     // If an error occurs, send the error back to the client
@@ -156,7 +158,7 @@ app.get("/" , function(req, res){
   });
 
 
-  // res.render("index");
+//   //res.render("index");
 })
 // Start the server
 app.listen(PORT, function() {

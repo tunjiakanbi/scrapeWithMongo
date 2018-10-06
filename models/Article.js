@@ -22,7 +22,20 @@ var ArticleSchema = new Schema({
   note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  summary: {
+    type: String,
+    required: true
+  },
+  saved: {
+    type: Boolean,
+    default: false
   }
+
 });
 
 // This creates our model from the above schema, using mongoose's model method

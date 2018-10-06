@@ -1,8 +1,17 @@
+$(document).ready(function() {
+//We want to fetch the articles to refresh the database before we retrieve
+  $.ajax({
+    method: "GET",
+    url: "api/fetch" 
+  });
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
+$.getJSON("api/allarticles", function(data) {
+  // console.log("0th elmnt",data[0]._id);
   // For each one
+
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
+    
     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
   }
 });
@@ -69,4 +78,5 @@ $(document).on("click", "#savenote", function() {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
+});
 });
