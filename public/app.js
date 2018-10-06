@@ -26,6 +26,8 @@ $("#scrapper").click(function(){
   
       $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
     }
+  }).fail(function(err){
+ console.log(err);
   });
 });
 
